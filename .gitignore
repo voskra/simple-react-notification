@@ -1,0 +1,10 @@
+# IDEA files
+.idea
+*.iml
+
+# NodeJS Files
+node_modules/
+package-lock.json
+
+#build folder
+public/

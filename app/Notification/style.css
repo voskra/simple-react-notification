@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'), local('Roboto-Regular'), url('./fonts/Roboto.woff2') format('woff2'), url('./fonts/Roboto.woff') format('woff'), url('./fonts/Roboto.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: local('Roboto Bold'), local('Roboto-Bold'), url('./fonts/Robotobold.woff2') format('woff2'), url('./fonts/Robotobold.woff') format('woff'), url('./fonts/Robotobold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.notification-container {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999999;
+    padding: 0 10px;
+    margin-top: 10px;
+    width: 350px;
+    height: auto;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.notification {
+    box-sizing: border-box;
+    position: relative;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #bbbbbb;
+    cursor: pointer;
+    font-size: 1em;
+    line-height: 1.2em;
+    margin: 0 10px 10px;
+    opacity: 0.9;
+    overflow: hidden;
+    transition: all 500ms cubic-bezier(0.1, 0.5, 0.3, 1.2);
+    right: 0;
+}
+
+.notification.enter {
+    right: -350px;
+}
+
+.notification.hide {
+    transition: all 500ms cubic-bezier(0.6, -0.2, 0.7, 0.1);
+    margin: 0;
+    right: -350px;
+}
+
+.notification:hover {
+    opacity: 1;
+}
+
+.notification-message {
+    font-family: Roboto, Arial, sans-serif;
+}
+
+.notification .title {
+    font-family: Roboto-Bold, Arial, sans-serif;
+    font-size: 1em;
+    line-height: 1.2em;
+    margin: 0 0 5px 0;
+}
+
+.notification-info {
+    background-color: #cde3f2;
+}
+
+.notification-info .title {
+    color: #016fc6b3;
+}
+
+.notification-success {
+    background-color: #e4f6ce;
+}
+
+.notification-success .title {
+    color: #5ea400;
+}
+
+.notification-warning {
+    background-color: #f4e9d5;
+}
+
+.notification-warning .title {
+    color: #e9ab18;
+}
+
+.notification-error {
+    background-color: #fae3e3;
+}
+
+.notification-error .title {
+    color: #ec3d3d;
+}
