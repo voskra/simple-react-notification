@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Notification} from "./Notification";
+import {addChangeListener, Notification, removeChangeListener, remove} from "./Notification";
 
 class Notifications extends Component {
 
@@ -7,13 +7,13 @@ class Notifications extends Component {
         notifications: []
     };
 
-    componentWillMount = () => Notification.addChangeListener(this.addNotifications);
+    componentWillMount = () => addChangeListener(this.addNotifications);
 
-    componentWillUnmount = () => Notification.removeChangeListener(this.addNotifications);
+    componentWillUnmount = () => removeChangeListener(this.addNotifications);
 
     addNotifications = (notifications) => this.setState({notifications});
 
-    requestHide = (notification) => Notification.remove(notification);
+    requestHide = (notification) => remove(notification);
 
     render() {
         const {notifications} = this.state;
@@ -22,7 +22,7 @@ class Notifications extends Component {
             <div className='notification-container'>
                 {notifications.map(notification => {
                     const key = notification.id || new Date().getTime();
-                    return <Notification.render key={key} onRequestHide={()=>this.requestHide(notification)} {...notification}/>;
+                    return <Notification key={key} onRequestHide={()=>this.requestHide(notification)} {...notification}/>;
                 })}
             </div>
         );

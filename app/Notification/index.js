@@ -1,5 +1,5 @@
 import Notifications from "./Notifications";
-import {Notification} from "./Notification";
+import {error as errorMessage, success as successMessage, info as infoMessage, warning as warningMessage} from "./Notification";
 
-export {Notification};
+export {errorMessage, successMessage, infoMessage, warningMessage};
 export default Notifications;
