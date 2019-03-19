@@ -14,13 +14,17 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 
 const getClientEnvironment = require('./env');
-const env = getClientEnvironment('');
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
+const cssFilename = 'static/css/[name].[contenthash:8].css';
 
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
-const shouldUseRelativeAssetPaths = true;
+
+const publicPath = paths.servedPath;
+const shouldUseRelativeAssetPaths = publicPath === './';
+const publicUrl = publicPath.slice(0, -1);
+const env = getClientEnvironment(publicUrl);
 
 if (env.stringified['process.env'].NODE_ENV !== '"production"') {
     throw new Error('Production builds must have NODE_ENV=production.');
@@ -32,7 +36,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
             loader: MiniCssExtractPlugin.loader,
             options: Object.assign(
                 {},
-                shouldUseRelativeAssetPaths ? { publicPath: '../../' } : undefined
+                shouldUseRelativeAssetPaths ? { publicPath: Array(cssFilename.split('/').length).join('../') } : {}
             ),
         },
         {
@@ -77,6 +81,7 @@ module.exports = {
         path: paths.appBuild,
         filename: 'static/js/[name].[chunkhash:8].js',
         chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
+        publicPath: publicPath,
         devtoolModuleFilenameTemplate: info =>
             path
                 .relative(paths.appSrc, info.absoluteResourcePath)

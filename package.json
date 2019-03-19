@@ -1,11 +1,13 @@
 {
   "name": "simple-react-notification",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node config/scripts/start.js",
     "build": "node config/scripts/build.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/voskra/simple-react-notification/issues"
   },
-  "homepage": "https://github.com/voskra/simple-react-notification#readme",
+  "homepage": "https://voskra.github.io/simple-react-notification",
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/plugin-proposal-class-properties": "^7.3.4",
@@ -42,6 +44,7 @@
     "eslint-plugin-react": "^7.12.4",
     "file-loader": "^3.0.1",
     "fs-extra": "^7.0.1",
+    "gh-pages": "^2.0.1",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "mini-css-extract-plugin": "^0.5.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
