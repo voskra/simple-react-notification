@@ -43,7 +43,7 @@ const change = function () {
     eventEmitter.emit('change', list);
 };
 
-const allTypes = function (type, title, message, timeOut, onClick) {
+const allTypes = function ({type, title, message, timeOut, onClick}) {
     let props = {type, title, message, timeOut, onClick};
     for (let i in props) {
         if (props[i] === undefined) delete props[i];
@@ -51,20 +51,20 @@ const allTypes = function (type, title, message, timeOut, onClick) {
     create(props);
 };
 
-export const success = function (...props) {
-    allTypes('success', ...props);
+export const success = function (props) {
+    allTypes({...props, type:'success'});
 };
 
-export const warning = function (...props) {
-    allTypes('warning', ...props);
+export const warning = function (props) {
+    allTypes({...props, type:'warning'});
 };
 
-export const error = function (...props) {
-    allTypes('error', ...props);
+export const error = function (props) {
+    allTypes({...props, type:'error'});
 };
 
-export const info = function (...props) {
-    allTypes('info', ...props);
+export const info = function (props) {
+    allTypes({...props, type:'info'});
 };
 
 export class Notification extends Component {
@@ -108,13 +108,13 @@ export class Notification extends Component {
         let className = `notification${this.state.classEnter}`;
         if (!!type)
             className += ` notification-${type}`;
-        title = title ? (<h4 className="title">{title}</h4>) : null;
-
+        title = title ? (<h4 className="title">{React.isValidElement(title)?title:title.toString()}</h4>) : null;
+        message = message ? (<div className="message">{React.isValidElement(message)?message:message.toString()}</div>) : null;
         return (
             <div className={className} onClick={this.handleClick}>
                 <div className="notification-message" role="alert">
                     {title}
-                    <div className="message">{message}</div>
+                    {message}
                 </div>
             </div>
         );

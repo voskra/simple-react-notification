@@ -12,13 +12,19 @@ class App extends Component {
                 <NavBar>Simple React Notifications</NavBar>
                 <div style={{display: 'flex', flexDirection: 'column'}}>
                     <Divider/>
-                    <Button style={{width: '200px'}} onClick={()=>infoMessage('Title here', <Button onClick={()=>alert('Info')}>Go Go Info</Button>, null)}>GO INFO</Button>
+                    <Button style={{width: '200px'}}
+                            onClick={()=>infoMessage({title:'Title here', message:<Button onClick={()=>alert('Info')}>Go Go Info</Button>})}>
+                        GO INFO
+                    </Button>
                     <Divider/>
-                    <Button style={{width: '200px'}} primary onClick={()=>successMessage('Title here', 'Title Success')}>GO SUCCESS</Button>
+                    <Button style={{width: '200px'}} primary
+                            onClick={()=>successMessage({title:'Title here', message:'Title Success'})}>GO SUCCESS</Button>
                     <Divider/>
-                    <Button style={{width: '200px'}} secondary onClick={()=>warningMessage('Warning message')}>GO WARNING</Button>
+                    <Button style={{width: '200px'}} secondary
+                            onClick={()=>warningMessage({message:'Warning message',title:<div>Title</div>})}>GO WARNING</Button>
                     <Divider/>
-                    <Button style={{width: '200px'}} danger onClick={()=>errorMessage('Error message', 'Title here')}>GO ERROR</Button>
+                    <Button style={{width: '200px'}} danger
+                            onClick={()=>errorMessage({message:'Title here'})}>GO ERROR</Button>
                     <Divider/>
                     <Notifications/>
                 </div>
