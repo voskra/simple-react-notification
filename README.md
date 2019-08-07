@@ -17,10 +17,10 @@ class App extends Component {
     render() {
         return (
             <div>
-                <button onClick={()=>infoMessage('Title here', <button onClick={()=>alert('Info')}>Go Go Info</button>, null)}>GO INFO</button>
-                <button onClick={()=>successMessage('Title here', 'Title Success')}>GO SUCCESS</button>
-                <button onClick={()=>warningMessage('Warning message')}>GO WARNING</button>
-                <button onClick={()=>errorMessage('Error message', 'Title here')}>GO ERROR</button>
+                <button onClick={()=>infoMessage({title:'Title here', message:<button onClick={()=>alert('Info')}>Go Go Info</button>})}>GO INFO</button>
+                <button onClick={()=>successMessage({title:'Title here', message:'Title Success'})}>GO SUCCESS</button>
+                <button onClick={()=>warningMessage({message:'Warning message', onClick:()=>alert('Click warning')})}>GO WARNING</button>
+                <button onClick={()=>errorMessage({title:'Error message', message:'Title here',timeOut:500})}>GO ERROR</button>
                 <Notifications/>
             </div>
         );
